@@ -5,5 +5,7 @@
 void problem_1();
 // find the sum of all even valued fibonacci numbers less than 4 million
 void problem_2();
+// find the largest prime factor of a number
+void problem_3();
 
 

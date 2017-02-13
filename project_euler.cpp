@@ -42,3 +42,28 @@ void problem_2()
 
     cout << "sum of even fibonacci numbers (below " << limit << "): " << sum_fibonacci_evens << endl;
 }
+
+// find the largest prime factor of a number
+// not sure how well this will work on a 32bit system
+void problem_3()
+{
+    cout << "problem #3" << endl;
+
+    long long number = 600851475143;
+
+    vector<long long> prime_factors = prime_factorize(number);
+    // last prime factor in the list (returned in sorted order)
+    int largest_factor = prime_factors[prime_factors.size() - 1];
+
+    cout << "prime factors of " << number << ": " << to_string_vector(prime_factors) << endl;
+    cout << "largest prime factor of " << number << ": " << largest_factor << endl;
+}
+
+
+
+
+
+
+
+
+
