@@ -33,7 +33,7 @@ bool is_palindrome_number(int n)
 
 
 // produce all possible combinations of products of two vectors
-vector<int> cross_product(vector<int>& vec1, vector<int>& vec2)
+vector<int> cross_product(const vector<int>& vec1, const vector<int>& vec2)
 {
     vector<int> result;
 

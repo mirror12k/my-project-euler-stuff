@@ -219,6 +219,24 @@ void problem_9()
 }
 
 
+// find the sum of primes below 2 million
+void problem_10()
+{
+    cout << "problem #10" << endl;
+
+    long long limit = 2000000;
+
+//    vector<long long> primes = prime_sequence_until<long long>(limit);
+    vector<long long> primes = arrayd_prime_sequence_until<long long>(limit);
+    long long sum_of_primes = sum(primes);
+
+    cout << "count primes below " << limit << ": " << primes.size() << endl;
+    cout << "sum of primes below " << limit << ": " << sum_of_primes << endl;
+}
+
+
+
+
 
 
 

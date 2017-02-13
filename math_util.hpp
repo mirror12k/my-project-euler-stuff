@@ -2,6 +2,7 @@
 #pragma once
 
 #include <vector>
+#include <array>
 #include <string>
 #include <cmath>
 #include <algorithm>
@@ -9,6 +10,7 @@
 #include <iterator>
 
 using std::vector;
+using std::array;
 using std::string;
 
 
@@ -36,12 +38,12 @@ template <typename T>
 vector<T> range(T start, T end);
 // produce a sum of all values in vec
 template <typename T>
-T sum(vector<T> vec);
+T sum(const vector<T>& vec);
 // produce a product of all values in vec
 template <typename T>
-T product(vector<T> vec);
+T product(const vector<T>& vec);
 // produce all possible combinations of products of two vectors
-vector<int> cross_product(vector<int>& vec1, vector<int>& vec2);
+vector<int> cross_product(const vector<int>& vec1, const vector<int>& vec2);
 
 // produce a sequence of fibonacci numbers less than limit
 vector<int> fibonacci_sequence(int limit);
@@ -58,6 +60,14 @@ vector<T> prime_factorize(T n);
 template <typename T>
 vector<T> prime_sequence(T n);
 
+// compute a sequence of primes less than limit
+template <typename T>
+vector<T> prime_sequence_until(T limit);
+
+// compute a sequence of primes less than limit using a giant memory array (faster for limited sequence sizes)
+template <typename T>
+vector<T> arrayd_prime_sequence_until(T limit);
+
 // compute all subsequences of length characters in the string
 vector<string> subsequences(const string& str, int length);
 
@@ -65,14 +75,14 @@ vector<string> subsequences(const string& str, int length);
 
 // map a vector from using a basic mapping function
 template <typename T, typename R>
-vector<R> map_vector(vector<T>& vec, R (*map_function)(T));
+vector<R> map_vector(const vector<T>& vec, R (*map_function)(T));
 // select values from vec into a resulting vector based on the bools in the selection vec
 template <typename T>
-vector<T> select_vector(vector<T>& vec, vector<bool>& selection);
+vector<T> select_vector(const vector<T>& vec, const vector<bool>& selection);
 
 // convert a vector of items to a pretty string
 template <typename T>
-string to_string_vector(vector<T>& vec);
+string to_string_vector(const vector<T>& vec);
 
 
 
@@ -109,7 +119,7 @@ vector<T> range(T start, T end)
 
 // produce a sum of all integers in vec
 template <typename T>
-T sum(vector<T> vec)
+T sum(const vector<T>& vec)
 {
     T sum = 0;
     for (auto iter = vec.begin(); iter != vec.end(); iter++)
@@ -119,7 +129,7 @@ T sum(vector<T> vec)
 
 // produce a product of all values in vec
 template <typename T>
-T product(vector<T> vec)
+T product(const vector<T>& vec)
 {
     T product = 1;
     for (auto iter = vec.begin(); iter != vec.end(); iter++)
@@ -158,7 +168,7 @@ vector<T> prime_factorize(T n)
 }
 
 template <typename T>
-bool is_divisible_by(T n, vector<T> vec)
+bool is_divisible_by(T n, const vector<T>& vec)
 {
     for (auto iter = vec.begin(); iter != vec.end(); iter++)
         if (n % *iter == 0)
@@ -173,17 +183,52 @@ vector<T> prime_sequence(T n)
     vector<T> seq;
 
     seq.push_back(2);
-    if (seq.size() >= n)
-        return seq;
-    for (int v = 3;; v += 2)
+    for (T v = 3; seq.size() < n; v += 2)
         if (!is_divisible_by(v, seq))
-        {
             seq.push_back(v);
-            if (seq.size() >= n)
-                return seq;
-        }
 
     return seq;
+}
+
+// compute a sequence of primes less than limit
+template <typename T>
+vector<T> prime_sequence_until(T limit)
+{
+    vector<T> seq;
+
+    if (limit > 2)
+        seq.push_back(2);
+    for (T v = 3; v < limit; v += 2)
+        if (!is_divisible_by(v, seq))
+            seq.push_back(v);
+
+    return seq;
+}
+
+// compute a sequence of primes less than limit using a giant memory array
+template <typename T>
+vector<T> arrayd_prime_sequence_until(T limit)
+{
+    // allocate a number table to mark out a map of all primes
+    vector<bool> number_table;
+    for (T i = 0; i < limit; i++)
+        number_table.push_back(true);
+
+    // for each number
+    for (T i = 2; i < limit; i++)
+        // if it is prime
+        if (number_table[i] == true)
+            // iterate over all multiples of it, marking them non-prime
+            for (T j = i * i; j < limit; j += i)
+                number_table[j] = false;
+
+    // collect the remaining primes in a final array
+    vector<T> primes;
+    for (T i = 2; i < limit; i++)
+        if (number_table[i] == true)
+            primes.push_back(i);
+
+    return primes;
 }
 
 
@@ -192,7 +237,7 @@ vector<T> prime_sequence(T n)
 
 // map a vector from using a basic mapping function
 template <typename T, typename R>
-vector<R> map_vector(vector<T>& vec, R (*map_function)(T))
+vector<R> map_vector(const vector<T>& vec, R (*map_function)(T))
 {
     vector<R> result;
 
@@ -203,7 +248,7 @@ vector<R> map_vector(vector<T>& vec, R (*map_function)(T))
 
 // select values from vec into a resulting vector based on the bools in the selection vec
 template <typename T>
-vector<T> select_vector(vector<T>& vec, vector<bool>& selection)
+vector<T> select_vector(const vector<T>& vec, const vector<bool>& selection)
 {
     vector<T> result;
 
@@ -218,7 +263,7 @@ vector<T> select_vector(vector<T>& vec, vector<bool>& selection)
 // convert a vector of items to a pretty string
 // mostly taken from https://stackoverflow.com/questions/8581832/converting-a-vector-to-string
 template <typename T>
-string to_string_vector(vector<T>& vec)
+string to_string_vector(const vector<T>& vec)
 {
     std::ostringstream oss;
 

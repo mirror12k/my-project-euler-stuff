@@ -19,5 +19,7 @@ void problem_7();
 void problem_8();
 // find the product abc for a,b,c such that a + b + c = 1000 and a,b,c is a pythagorean triplet
 void problem_9();
+// find the sum of primes below 2 million
+void problem_10();
 
 
