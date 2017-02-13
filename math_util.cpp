@@ -30,26 +30,6 @@ bool is_palindrome_number(int n)
     return is_palindrome(str);
 }
 
-
-
-// produce a vector of ints from start to end - 1
-vector<int> range(int start, int end)
-{
-    vector<int> result;
-    for (int i = start; i < end; i++)
-        result.push_back(i);
-    return result;
-}
-
-// produce a sum of all integers in vec
-int sum(vector<int> vec)
-{
-    int sum = 0;
-    for (auto iter = vec.begin(); iter != vec.end(); iter++)
-        sum += *iter;
-    return sum;
-}
-
 // produce all possible combinations of products of two vectors
 vector<int> cross_product(vector<int>& vec1, vector<int>& vec2)
 {

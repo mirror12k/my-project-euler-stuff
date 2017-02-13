@@ -11,5 +11,7 @@ void problem_3();
 void problem_4();
 // find the smallest number evenly divisible by all numbers 1 to 20
 void problem_5();
+// find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
+void problem_6();
 
 

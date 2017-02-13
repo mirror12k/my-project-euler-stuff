@@ -22,10 +22,17 @@ bool is_palindrome(string s);
 // is a number palindrome
 bool is_palindrome_number(int n);
 
+
+// square a number
+template <typename T>
+T square(T n);
+
 // produce a vector of ints from start to end - 1
-vector<int> range(int start, int end);
+template <typename T>
+vector<T> range(T start, T end);
 // produce a sum of all integers in vec
-int sum(vector<int> vec);
+template <typename T>
+T sum(vector<T> vec);
 // produce all possible combinations of products of two vectors
 vector<int> cross_product(vector<int>& vec1, vector<int>& vec2);
 
@@ -59,9 +66,35 @@ string to_string_vector(vector<T>& vec);
 // definitions of template functions:
 
 
+template <typename T>
+T square(T n)
+{
+    return n * n;
+}
 
 
-#include <iostream>
+
+// produce a vector of ints from start to end - 1
+template <typename T>
+vector<T> range(T start, T end)
+{
+    vector<T> result;
+    for (T i = start; i < end; i++)
+        result.push_back(i);
+    return result;
+}
+
+// produce a sum of all integers in vec
+template <typename T>
+T sum(vector<T> vec)
+{
+    T sum = 0;
+    for (auto iter = vec.begin(); iter != vec.end(); iter++)
+        sum += *iter;
+    return sum;
+}
+
+
 
 
 // find a factor for the given number, or 1 if not found

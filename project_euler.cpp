@@ -84,8 +84,10 @@ void problem_5()
 {
     cout << "problem #5" << endl;
 
+    int limit = 20;
+
     int n = 1;
-    for (int i = 1; i <= 20; i++)
+    for (int i = 1; i <= limit; i++)
     {
         // skip i if n is already evenly divisible by it
         if (n % i != 0)
@@ -103,10 +105,28 @@ void problem_5()
         }
     }
 
-    cout << "smallest number evenly divisible by all numbers 1 to 20: " << n << endl;
+    cout << "smallest number evenly divisible by all numbers 1 to " << limit << ": " << n << endl;
 }
 
+// find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
+void problem_6()
+{
+    cout << "problem #6" << endl;
 
+    int limit = 100;
+
+    vector<int> numbers = range(1, limit + 1);
+    // calculate the sum of the squares
+    vector<int> squares = map_vector(numbers, square<int>);
+    int sum_of_squares = sum(squares);
+    // calculate the square of the sum
+    int square_of_sum = square(sum(numbers));
+
+    // calculate difference
+    int difference = square_of_sum - sum_of_squares;
+
+    cout << "difference between the sum of the squares and the square of the sum of 1 to " << limit << ": " << difference << endl;
+}
 
 
 
