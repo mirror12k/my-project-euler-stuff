@@ -197,18 +197,16 @@ void problem_9()
 
     for (int c = 1; c < 1000; c++)
     {
-        for (int b = 1; b < c; b++)
+        for (int b = 1; b < c && c + b < 1000; b++)
         {
-            for (int a = 1; a < b; a++)
+            int a = 1000 - c - b;
+            if (a < b)
             {
-                if (a + b + c == 1000)
+                if (a * a + b * b == c * c)
                 {
-                    if (a * a + b * b == c * c)
-                    {
-                        found_a = a;
-                        found_b = b;
-                        found_c = c;
-                    }
+                    found_a = a;
+                    found_b = b;
+                    found_c = c;
                 }
             }
         }
