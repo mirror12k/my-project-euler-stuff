@@ -59,6 +59,28 @@ void problem_3()
     cout << "largest prime factor of " << number << ": " << largest_factor << endl;
 }
 
+// find the largest palindrome product of two 3-digit numbers
+void problem_4()
+{
+    cout << "problem #4" << endl;
+
+    // calculate all products of 3-digit numbers
+    vector<int> all_numbers = range(100, 1000);
+    vector<int> all_products = cross_product(all_numbers, all_numbers);
+
+    // calculate which are palindromes, select, then sort them
+    vector<bool> which_palindromes = map_vector(all_products, is_palindrome_number);
+    vector<int> all_palindromes = select_vector(all_products, which_palindromes);
+    std::sort(all_palindromes.begin(), all_palindromes.end());
+
+    // select the largest one at the end
+    int largest_palindrome = all_palindromes[all_palindromes.size() - 1];
+
+    cout << "largest palindrome product of two 3-digit numbers: " << largest_palindrome << endl;
+}
+
+
+
 
 
 

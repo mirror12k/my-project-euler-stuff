@@ -10,7 +10,6 @@
 
 using std::vector;
 using std::string;
-using std::sqrt;
 
 
 
@@ -18,9 +17,17 @@ using std::sqrt;
 bool is_odd(int n);
 // is a number even
 bool is_even(int n);
+// is a string a palindrome
+bool is_palindrome(string s);
+// is a number palindrome
+bool is_palindrome_number(int n);
 
+// produce a vector of ints from start to end - 1
+vector<int> range(int start, int end);
 // produce a sum of all integers in vec
 int sum(vector<int> vec);
+// produce all possible combinations of products of two vectors
+vector<int> cross_product(vector<int>& vec1, vector<int>& vec2);
 
 // produce a sequence of fibonacci numbers less than limit
 vector<int> fibonacci_sequence(int limit);

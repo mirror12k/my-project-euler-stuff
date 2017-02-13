@@ -7,5 +7,7 @@ void problem_1();
 void problem_2();
 // find the largest prime factor of a number
 void problem_3();
+// find the largest palindrome product of two 3-digit numbers
+void problem_4();
 
 
