@@ -17,5 +17,7 @@ void problem_6();
 void problem_7();
 // find thirteen adjacent digits that have the largest product
 void problem_8();
+// find the product abc for a,b,c such that a + b + c = 1000 and a,b,c is a pythagorean triplet
+void problem_9();
 
 

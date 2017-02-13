@@ -188,6 +188,42 @@ void problem_8()
 //    cout << "sequences of length " << adjacent << ": " << to_string_vector(products) << endl;
 }
 
+// find the product abc for a,b,c such that a + b + c = 1000 and a,b,c is a pythagorean triplet
+void problem_9()
+{
+    cout << "problem #9" << endl;
+
+    int found_a = 0, found_b = 0, found_c = 0;
+
+    for (int c = 1; c < 1000; c++)
+    {
+        for (int b = 1; b < c; b++)
+        {
+            for (int a = 1; a < b; a++)
+            {
+                if (a + b + c == 1000)
+                {
+                    if (a * a + b * b == c * c)
+                    {
+                        found_a = a;
+                        found_b = b;
+                        found_c = c;
+                    }
+                }
+            }
+        }
+    }
+
+    cout << "a,b,c such that a + b + c = 1000 and a,b,c is a pythagorean triplet : " << found_a << ", " << found_b << ", " << found_c << endl;
+    cout << "product of a*b*c: " << found_a * found_b * found_c << endl;
+}
+
+
+
+
+
+
+
 
 
 
