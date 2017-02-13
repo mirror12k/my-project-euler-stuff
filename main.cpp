@@ -10,7 +10,8 @@ int main ()
 //    problem_3();
 //    problem_4();
 //    problem_5();
-    problem_6();
+//    problem_6();
+    problem_7();
 
     return 0;
 }

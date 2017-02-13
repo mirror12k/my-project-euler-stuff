@@ -13,5 +13,7 @@ void problem_4();
 void problem_5();
 // find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
 void problem_6();
+// find the 10001st prime
+void problem_7();
 
 

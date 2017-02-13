@@ -128,6 +128,20 @@ void problem_6()
     cout << "difference between the sum of the squares and the square of the sum of 1 to " << limit << ": " << difference << endl;
 }
 
+// find the 10001st prime
+void problem_7()
+{
+    cout << "problem #7" << endl;
+
+    int index = 10001;
+
+    vector<int> primes = prime_sequence(index);
+    int prime = primes[index - 1];
+
+    cout << "prime #" << index << ": " << prime << endl;
+}
+
+
 
 
 

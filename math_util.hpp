@@ -47,6 +47,10 @@ T find_factor(T n);
 template <typename T>
 vector<T> prime_factorize(T n);
 
+// compute a sequence of the first n primes
+template <typename T>
+vector<T> prime_sequence(T n);
+
 
 
 // map a vector from using a basic mapping function
@@ -123,6 +127,35 @@ vector<T> prime_factorize(T n)
     result.push_back(n);
 
     return result;
+}
+
+template <typename T>
+bool is_divisible_by(T n, vector<T> vec)
+{
+    for (auto iter = vec.begin(); iter != vec.end(); iter++)
+        if (n % *iter == 0)
+            return true;
+    return false;
+}
+
+// compute a sequence of the first n primes
+template <typename T>
+vector<T> prime_sequence(T n)
+{
+    vector<T> seq;
+
+    seq.push_back(2);
+    if (seq.size() >= n)
+        return seq;
+    for (int v = 3;; v += 2)
+        if (!is_divisible_by(v, seq))
+        {
+            seq.push_back(v);
+            if (seq.size() >= n)
+                return seq;
+        }
+
+    return seq;
 }
 
 
