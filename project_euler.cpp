@@ -79,6 +79,35 @@ void problem_4()
     cout << "largest palindrome product of two 3-digit numbers: " << largest_palindrome << endl;
 }
 
+// find the smallest number evenly divisible by all numbers 1 to 20
+void problem_5()
+{
+    cout << "problem #5" << endl;
+
+    int n = 1;
+    for (int i = 1; i <= 20; i++)
+    {
+        // skip i if n is already evenly divisible by it
+        if (n % i != 0)
+        {
+            int broken_n = n;
+            vector<int> factors = prime_factorize(i);
+            // iterate through the prime factors of i to find the one missing from n
+            while (broken_n % factors.back() == 0)
+            {
+                broken_n /= factors.back();
+                factors.pop_back();
+            }
+            // multiply n by the missing factor
+            n *= factors.back();
+        }
+    }
+
+    cout << "smallest number evenly divisible by all numbers 1 to 20: " << n << endl;
+}
+
+
+
 
 
 

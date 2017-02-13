@@ -73,32 +73,6 @@ vector<int> fibonacci_sequence(int limit)
     return seq;
 }
 
-// find a factor for the given number, or 1 if not found
-long long find_factor(long long n)
-{
-    for (long long i = 2; i < std::sqrt(n); i++)
-        if (n % i == 0)
-            return i;
-    return 1;
-}
-
-// factorize a number into its primes
-vector<long long> prime_factorize(long long n)
-{
-    vector<long long> result;
-
-    long long factor = find_factor(n);
-    while (factor != 1)
-    {
-        result.push_back(factor);
-        n /= factor;
-        factor = find_factor(n);
-    }
-    result.push_back(n);
-
-    return result;
-}
-
 
 
 

@@ -9,5 +9,7 @@ void problem_2();
 void problem_3();
 // find the largest palindrome product of two 3-digit numbers
 void problem_4();
+// find the smallest number evenly divisible by all numbers 1 to 20
+void problem_5();
 
 

@@ -33,10 +33,12 @@ vector<int> cross_product(vector<int>& vec1, vector<int>& vec2);
 vector<int> fibonacci_sequence(int limit);
 
 // find a factor for the given number, or 0 if not found
-long long find_factor(long long n);
+template <typename T>
+T find_factor(T n);
 
 // factorize a number into its primes
-vector<long long> prime_factorize(long long n);
+template <typename T>
+vector<T> prime_factorize(T n);
 
 
 
@@ -53,8 +55,46 @@ string to_string_vector(vector<T>& vec);
 
 
 
-
+/************************************************************/
 // definitions of template functions:
+
+
+
+
+#include <iostream>
+
+
+// find a factor for the given number, or 1 if not found
+template <typename T>
+T find_factor(T n)
+{
+    for (T i = 2; i <= std::sqrt(n); i++)
+        if (n % i == 0)
+            return i;
+    return 1;
+}
+
+// factorize a number into its primes
+template <typename T>
+vector<T> prime_factorize(T n)
+{
+    vector<T> result;
+
+    T factor = find_factor(n);
+    while (factor != 1)
+    {
+        result.push_back(factor);
+        n /= factor;
+        factor = find_factor(n);
+    }
+    result.push_back(n);
+
+    return result;
+}
+
+
+
+
 
 // map a vector from using a basic mapping function
 template <typename T, typename R>
