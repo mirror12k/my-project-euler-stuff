@@ -15,5 +15,7 @@ void problem_5();
 void problem_6();
 // find the 10001st prime
 void problem_7();
+// find thirteen adjacent digits that have the largest product
+void problem_8();
 
 

@@ -30,6 +30,8 @@ bool is_palindrome_number(int n)
     return is_palindrome(str);
 }
 
+
+
 // produce all possible combinations of products of two vectors
 vector<int> cross_product(vector<int>& vec1, vector<int>& vec2)
 {
@@ -52,6 +54,19 @@ vector<int> fibonacci_sequence(int limit)
         seq.push_back(seq[seq.size() - 2] + seq[seq.size() - 1]);
     return seq;
 }
+
+
+// compute all subsequences of length characters in the string
+vector<string> subsequences(const string& str, int length)
+{
+    vector<string> result;
+    for (int i = 0; i <= str.size() - length; i++)
+        result.push_back(str.substr(i, length));
+    return result;
+}
+
+
+
 
 
 

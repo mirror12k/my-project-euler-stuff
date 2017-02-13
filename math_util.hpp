@@ -23,6 +23,10 @@ bool is_palindrome(string s);
 bool is_palindrome_number(int n);
 
 
+// convert a character digit into its numeric equivalent
+template <typename T>
+T from_digit(char c);
+
 // square a number
 template <typename T>
 T square(T n);
@@ -30,9 +34,12 @@ T square(T n);
 // produce a vector of ints from start to end - 1
 template <typename T>
 vector<T> range(T start, T end);
-// produce a sum of all integers in vec
+// produce a sum of all values in vec
 template <typename T>
 T sum(vector<T> vec);
+// produce a product of all values in vec
+template <typename T>
+T product(vector<T> vec);
 // produce all possible combinations of products of two vectors
 vector<int> cross_product(vector<int>& vec1, vector<int>& vec2);
 
@@ -51,6 +58,9 @@ vector<T> prime_factorize(T n);
 template <typename T>
 vector<T> prime_sequence(T n);
 
+// compute all subsequences of length characters in the string
+vector<string> subsequences(const string& str, int length);
+
 
 
 // map a vector from using a basic mapping function
@@ -68,6 +78,15 @@ string to_string_vector(vector<T>& vec);
 
 /************************************************************/
 // definitions of template functions:
+
+
+
+// convert a character digit into its numeric equivalent
+template <typename T>
+T from_digit(char c)
+{
+    return c - '0';
+}
 
 
 template <typename T>
@@ -98,6 +117,15 @@ T sum(vector<T> vec)
     return sum;
 }
 
+// produce a product of all values in vec
+template <typename T>
+T product(vector<T> vec)
+{
+    T product = 1;
+    for (auto iter = vec.begin(); iter != vec.end(); iter++)
+        product *= *iter;
+    return product;
+}
 
 
 
