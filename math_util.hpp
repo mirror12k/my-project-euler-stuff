@@ -44,6 +44,13 @@ template <typename T>
 T product(const vector<T>& vec);
 // produce all possible combinations of products of two vectors
 vector<int> cross_product(const vector<int>& vec1, const vector<int>& vec2);
+// find the maximum value in a vector
+template <typename T>
+T max(const vector<T>& vec);
+// find the minimum value in a vector
+template <typename T>
+T min(const vector<T>& vec);
+
 
 // produce a sequence of fibonacci numbers less than limit
 vector<int> fibonacci_sequence(int limit);
@@ -135,6 +142,28 @@ T product(const vector<T>& vec)
     for (auto iter = vec.begin(); iter != vec.end(); iter++)
         product *= *iter;
     return product;
+}
+
+// find the maximum value in a vector
+template <typename T>
+T max(const vector<T>& vec)
+{
+    T max = vec.front();
+    for (auto iter = vec.begin(); iter != vec.end(); iter++)
+        if (*iter > max)
+            max = *iter;
+    return max;
+}
+
+// find the minimum value in a vector
+template <typename T>
+T min(const vector<T>& vec)
+{
+    T min = vec.front();
+    for (auto iter = vec.begin(); iter != vec.end(); iter++)
+        if (*iter < min)
+            min = *iter;
+    return min;
 }
 
 

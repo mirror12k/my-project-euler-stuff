@@ -22,4 +22,7 @@ void problem_9();
 // find the sum of primes below 2 million
 void problem_10();
 
+// find the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid
+void problem_11();
+
 
