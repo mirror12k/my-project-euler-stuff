@@ -309,6 +309,22 @@ void problem_11()
     cout << "greatest product of four adjacent numbers in the same direction: " << greatest_product << endl;
 }
 
+// find the value of the first triangle number to have over five hundred divisors
+void problem_12()
+{
+    cout << "problem #12" << endl;
+
+    long long factors_needed = 500;
+
+    long long i = 1;
+    while (factorize(sum_of_arithemtic_sequence(i)).size() <= factors_needed)
+        i++;
+
+    cout << "first triangle number with over " << factors_needed << " factors: " << sum_of_arithemtic_sequence(i) << endl;
+//    cout << "factors: " << to_string_vector(factorize(sum_of_arithemtic_sequence(i))) << endl;
+}
+
+
 
 
 

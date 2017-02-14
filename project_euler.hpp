@@ -24,5 +24,7 @@ void problem_10();
 
 // find the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid
 void problem_11();
+// find the value of the first triangle number to have over five hundred divisors
+void problem_12();
 
 

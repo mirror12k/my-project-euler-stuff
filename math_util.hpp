@@ -25,6 +25,7 @@ bool is_palindrome(string s);
 bool is_palindrome_number(int n);
 
 
+// utility functions for use in callbacks
 // convert a character digit into its numeric equivalent
 template <typename T>
 T from_digit(char c);
@@ -32,6 +33,11 @@ T from_digit(char c);
 // square a number
 template <typename T>
 T square(T n);
+
+// sum of arithmetic series of factor 1
+template <typename T>
+T sum_of_arithemtic_sequence(T n);
+
 
 // produce a vector of ints from start to end - 1
 template <typename T>
@@ -54,10 +60,16 @@ T min(const vector<T>& vec);
 
 // produce a sequence of fibonacci numbers less than limit
 vector<int> fibonacci_sequence(int limit);
+// produce a sequence of triangle numbers less than limit
+template <typename T>
+vector<T> triangle_numbers_sequence(T limit);
 
 // find a factor for the given number, or 0 if not found
 template <typename T>
 T find_factor(T n);
+// find all possible factors of a given number, including 1 and itself
+template <typename T>
+vector<T> factorize(T n);
 
 // factorize a number into its primes
 template <typename T>
@@ -111,6 +123,14 @@ T square(T n)
 {
     return n * n;
 }
+
+// sum of arithmetic series of factor 1
+template <typename T>
+T sum_of_arithemtic_sequence(T n)
+{
+    return n * (n + 1) / 2;
+}
+
 
 
 
@@ -168,6 +188,30 @@ T min(const vector<T>& vec)
 
 
 
+
+
+// produce a sequence of triangle numbers less than limit
+template <typename T>
+vector<T> triangle_numbers_sequence(T limit)
+{
+    vector<T> seq;
+
+    T i = 1;
+    T triangle = sum_of_arithemtic_sequence(i);
+    while (triangle < limit)
+    {
+        seq.push_back(triangle);
+        i++;
+        triangle = sum_of_arithemtic_sequence(i);
+    }
+
+    return seq;
+}
+
+
+
+
+
 // find a factor for the given number, or 1 if not found
 template <typename T>
 T find_factor(T n)
@@ -176,6 +220,24 @@ T find_factor(T n)
         if (n % i == 0)
             return i;
     return 1;
+}
+
+// find all possible factors of a given number, including 1 and itself
+template <typename T>
+vector<T> factorize(T n)
+{
+    vector<T> factors;
+
+    T sqrt_of_n = std::sqrt(n);
+    for (T i = 1; i < sqrt_of_n; i++)
+        if (n % i == 0)
+        {
+            factors.push_back(i);
+            factors.push_back(n / i);
+        }
+    if (sqrt_of_n * sqrt_of_n == n)
+        factors.push_back(sqrt_of_n);
+    return factors;
 }
 
 // factorize a number into its primes
