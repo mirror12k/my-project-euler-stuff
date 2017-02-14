@@ -63,6 +63,9 @@ vector<int> fibonacci_sequence(int limit);
 // produce a sequence of triangle numbers less than limit
 template <typename T>
 vector<T> triangle_numbers_sequence(T limit);
+// produce a collatz sequence starting from the given number
+template <typename T>
+vector<T> collatz_sequence(T start);
 
 // find a factor for the given number, or 0 if not found
 template <typename T>
@@ -204,6 +207,27 @@ vector<T> triangle_numbers_sequence(T limit)
         i++;
         triangle = sum_of_arithemtic_sequence(i);
     }
+
+    return seq;
+}
+
+
+// produce a collatz sequence starting from the given number
+template <typename T>
+vector<T> collatz_sequence(T start)
+{
+    vector<T> seq;
+
+    T val = start;
+    while (val > 1)
+    {
+        seq.push_back(val);
+        if (val % 2 == 0)
+            val = val / 2;
+        else
+            val = 3 * val + 1;
+    }
+    seq.push_back(val);
 
     return seq;
 }

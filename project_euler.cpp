@@ -315,7 +315,7 @@ void problem_12()
 {
     cout << "problem #12" << endl;
 
-    long long factors_needed = 500;
+    unsigned int factors_needed = 500;
 
     long long i = 1;
     while (factorize(sum_of_arithemtic_sequence(i)).size() <= factors_needed)
@@ -447,6 +447,31 @@ void problem_13()
 
 
 
+// find which starting number, under one million, produces the longest collatz sequence
+void problem_14()
+{
+    cout << "problem #14" << endl;
+
+    long long limit = 1000000;
+
+    // calculate lengths of collatz sequences
+    vector<long long> collatz_lengths;
+    collatz_lengths.push_back(0);
+    for (long long i = 1; i < limit; i++)
+        collatz_lengths.push_back(collatz_sequence(i).size());
+
+    // find the largest index
+    long long largest_index = 0, largest_length = 0;
+    for (long long i = 1; i < limit; i++)
+        if (collatz_lengths[i] > largest_length)
+        {
+            largest_length = collatz_lengths[i];
+            largest_index = i;
+        }
+
+
+    cout << "number which produces the longest collatz sequence under " << limit << ": " << largest_index << endl;
+}
 
 
 

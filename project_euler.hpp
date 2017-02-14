@@ -28,5 +28,7 @@ void problem_11();
 void problem_12();
 // find the first ten digits of the sum of one-hundred 50-digit numbers
 void problem_13();
+// find which starting number, under one million, produces the longest collatz sequence
+void problem_14();
 
 
