@@ -26,5 +26,7 @@ void problem_10();
 void problem_11();
 // find the value of the first triangle number to have over five hundred divisors
 void problem_12();
+// find the first ten digits of the sum of one-hundred 50-digit numbers
+void problem_13();
 
 
