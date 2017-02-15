@@ -474,6 +474,35 @@ void problem_14()
 }
 
 
+// our super special grid
+long long problem_15_data[21][21];
+
+// find all the amount of routes through a directed 20x20 grid
+void problem_15()
+{
+    cout << "problem #14" << endl;
+
+    // runs in n^3 time for a grid of n^n size
+    // not bad, can be optimized, but not necessary as 20*20 runs in 8000 operations
+    for (int x = 0; x < 21; x++)
+    {
+        for (int y = 0; y < 21; y++)
+        {
+            long long num_routes;
+            if (x == 0)
+                num_routes = 1;
+            else
+            {
+                num_routes = 0;
+                for (int iy = 0; iy <= y; iy++)
+                    num_routes += problem_15_data[x - 1][iy];
+            }
+            problem_15_data[x][y] = num_routes;
+        }
+    }
+    cout << "amount of routes through a directed 20x20 grid: " << problem_15_data[20][20] << endl;
+}
+
 
 
 

@@ -30,5 +30,7 @@ void problem_12();
 void problem_13();
 // find which starting number, under one million, produces the longest collatz sequence
 void problem_14();
+// find all the amount of routes through a directed 20x20 grid
+void problem_15();
 
 
