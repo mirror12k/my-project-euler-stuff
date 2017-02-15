@@ -14,8 +14,31 @@ vectored_bigint::vectored_bigint(const string& s)
 }
 
 
+// adds an integer value to the bigint
+vectored_bigint vectored_bigint::operator+(int value) const
+{
+    vectored_bigint result;
+
+    int carry = value;
+    // if there are any remaining digits in either number, add them over with carry
+    for (auto iter = this->begin(); iter != this->end(); iter++)
+    {
+        carry += *iter;
+        result.push_back(carry % 10);
+        carry /= 10;
+    }
+    // if we still have a carry, push it into the result
+    while (carry != 0)
+    {
+        result.push_back(carry % 10);
+        carry /= 10;
+    }
+
+    return result;
+}
+
 // adds together the two bigints into a new third bigint
-vectored_bigint vectored_bigint::operator+(const vectored_bigint& other)
+vectored_bigint vectored_bigint::operator+(const vectored_bigint& other) const
 {
     vectored_bigint result;
 
@@ -51,8 +74,42 @@ vectored_bigint vectored_bigint::operator+(const vectored_bigint& other)
     return result;
 }
 
+// multiplies the bigint by some integer value
+vectored_bigint vectored_bigint::operator*(int value) const
+{
+    vectored_bigint result;
+
+    int carry = 0;
+    // if there are any remaining digits in either number, add them over with carry
+    for (auto iter = this->begin(); iter != this->end(); iter++)
+    {
+        carry += value * *iter;
+        result.push_back(carry % 10);
+        carry /= 10;
+    }
+    // if we still have a carry, push it into the result
+    while (carry != 0)
+    {
+        result.push_back(carry % 10);
+        carry /= 10;
+    }
+
+    return result;
+}
+
+//// multiplies together the two bigints into a new third bigint
+//vectored_bigint vectored_bigint::operator*(const vectored_bigint& other) const
+//{
+//    vectored_bigint result;
+//
+//    // for each digit in other
+//        // multiply each digit in us by the other
+//        // add to result
+//
+//}
+
 // converts the bigint back to a string
-string vectored_bigint::to_string()
+string vectored_bigint::to_string() const
 {
     string result = "";
     for (auto iter = this->rbegin(); iter != this->rend(); iter++)
