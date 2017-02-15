@@ -32,5 +32,15 @@ void problem_13();
 void problem_14();
 // find all the amount of routes through a directed 20x20 grid
 void problem_15();
+// find the sum of the digits of 2^1000
+void problem_16();
+
+
+
+
+
+
+
+
 
 

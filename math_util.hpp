@@ -58,6 +58,10 @@ template <typename T>
 T min(const vector<T>& vec);
 
 
+// raise a value to an exponent by squaring repeatedly
+template <typename T>
+T exponentiate_by_squaring(const T& value, int power);
+
 // produce a sequence of fibonacci numbers less than limit
 vector<int> fibonacci_sequence(int limit);
 // produce a sequence of triangle numbers less than limit
@@ -190,6 +194,19 @@ T min(const vector<T>& vec)
 }
 
 
+
+
+// raise a value to an exponent by squaring repeatedly
+template <typename T>
+T exponentiate_by_squaring(const T& value, int power)
+{
+    if (power == 1)
+        return value;
+    else if (power % 2 == 0)
+        return exponentiate_by_squaring(value * value, power / 2);
+    else
+        return exponentiate_by_squaring(value * value, power / 2) * value;
+}
 
 
 

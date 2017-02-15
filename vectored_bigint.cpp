@@ -5,6 +5,18 @@ vectored_bigint::vectored_bigint()
 : vector<char>()
 {}
 
+
+// creates a biging from the given integer
+vectored_bigint::vectored_bigint(int value)
+: vector<char>()
+{
+    while (value > 0)
+    {
+        this->push_back(value % 10);
+        value /= 10;
+    }
+}
+
 // reads a string of digits and loads the bigint from them
 vectored_bigint::vectored_bigint(const string& s)
 : vector<char>()
@@ -97,16 +109,27 @@ vectored_bigint vectored_bigint::operator*(int value) const
     return result;
 }
 
-//// multiplies together the two bigints into a new third bigint
-//vectored_bigint vectored_bigint::operator*(const vectored_bigint& other) const
-//{
-//    vectored_bigint result;
-//
-//    // for each digit in other
-//        // multiply each digit in us by the other
-//        // add to result
-//
-//}
+// multiplies together the two bigints into a new third bigint
+vectored_bigint vectored_bigint::operator*(const vectored_bigint& other) const
+{
+    vectored_bigint result;
+
+    int offset = 0;
+    // multiply every digit in other by the entirety of this and sum them together
+    for (auto iter = other.begin(); iter != other.end(); iter++)
+    {
+        // calculate the result for this digit
+        vectored_bigint temp = *this * *iter;
+        // shift it over by offset positions
+        for (int i = 0; i < offset; i++)
+            temp = temp * 10;
+        // add it into the result
+        result = result + temp;
+        offset++;
+    }
+
+    return result;
+}
 
 // converts the bigint back to a string
 string vectored_bigint::to_string() const

@@ -480,7 +480,7 @@ long long problem_15_data[21][21];
 // find all the amount of routes through a directed 20x20 grid
 void problem_15()
 {
-    cout << "problem #14" << endl;
+    cout << "problem #15" << endl;
 
     // runs in n^3 time for a grid of n^n size
     // not bad, can be optimized, but not necessary as 20*20 runs in 8000 operations
@@ -502,6 +502,35 @@ void problem_15()
     }
     cout << "amount of routes through a directed 20x20 grid: " << problem_15_data[20][20] << endl;
 }
+
+// find the sum of the digits of 2^1000
+void problem_16()
+{
+    cout << "problem #16" << endl;
+
+    // calculate 2**1000
+    vectored_bigint val("2");
+    val = exponentiate_by_squaring(val, 1000);
+
+    // calculate the sum of the digits
+    int sum_of_digits = 0;
+    string digits = val.to_string();
+    for (auto iter = digits.begin(); iter != digits.end(); iter++)
+        sum_of_digits += *iter - '0';
+
+    cout << "2**1000: " << val.to_string() << endl;
+    cout << "sum of digits: " << sum_of_digits << endl;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

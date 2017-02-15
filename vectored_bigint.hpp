@@ -15,6 +15,8 @@ class vectored_bigint : public vector<char>
 {
 public:
     vectored_bigint();
+    // creates a biging from the given integer
+    vectored_bigint(int value);
     // reads a string of digits and loads the bigint from them
     vectored_bigint(const string& s);
 
